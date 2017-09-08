@@ -21,18 +21,14 @@ import java.util.List;
 
 public class SQLReader extends AppCompatActivity {
 
-
-    GridView gridView;
     ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sqlreader);
-        gridView = (GridView) findViewById(R.id.gv);
         listView = (ListView) findViewById(R.id.list_view);
         Database DB = new Database(this);
-   //    DB.InsertToDB("Task 1", "09/07/17", 1, true);
         List<Tasks> tasksList;
         tasksList = DB.ReadFromDatabase();
         List<String> taskListStrings = new ArrayList<String>();
@@ -60,5 +56,10 @@ public class SQLReader extends AppCompatActivity {
             Toast.makeText(this, "Empty Database", Toast.LENGTH_LONG).show();
         }
 
+    }
+
+    public void InsertSQL(View view) {
+        Intent intent = new Intent(this,SQLInsert.class);
+        startActivity(intent);
     }
 }
